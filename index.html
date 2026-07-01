@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shruthi Sankaranarayanan — Brand Marketing &amp; Strategy</title>
+  <meta name="description" content="Shruthi Sankaranarayanan — Brand marketing and strategy professional with experience at Henkel (Pattex), specialising in campaign development, brand architecture, and cross-market execution." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ====================================================
+       NAV
+       ==================================================== -->
+  <header>
+    <nav id="site-nav" role="navigation" aria-label="Main navigation">
+      <div class="nav-inner">
+
+        <!-- Monogram -->
+        <a href="#home" class="nav-monogram" aria-label="Back to top">S</a>
+
+        <!-- Desktop links -->
+        <ul class="nav-links" role="list">
+          <li><a href="#home"    data-section="home">About</a></li>
+          <li><a href="#work"    data-section="work">Work</a></li>
+          <li><a href="#contact" data-section="contact">Contact</a></li>
+        </ul>
+
+        <!-- Hamburger (mobile) -->
+        <button id="nav-hamburger" class="nav-hamburger" aria-controls="nav-overlay" aria-expanded="false" aria-label="Open menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+      </div>
+    </nav>
+
+    <!-- Mobile full-screen overlay -->
+    <div id="nav-overlay" role="dialog" aria-modal="true" aria-label="Navigation menu">
+      <ul class="overlay-links" role="list">
+        <li><a href="#home"    data-section="home">About</a></li>
+        <li><a href="#work"    data-section="work">Work</a></li>
+        <li><a href="#contact" data-section="contact">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ====================================================
+         01 — HOME / HERO + ABOUT (merged)
+         ==================================================== -->
+    <section id="home" aria-labelledby="hero-name">
+      <div class="hero-inner">
+
+        <!-- Name -->
+        <h1 id="hero-name" class="hero-name">
+          SHRUTHI<br />
+          <span class="line2">SANKARANARAYANAN</span>
+        </h1>
+
+        <!-- Tagline -->
+        <p class="hero-tagline">Brand Marketing &amp; Strategy</p>
+
+        <!-- Italic hero line — single line, scales down to fit -->
+        <p class="hero-line">"Building and growing brands that people connect with."</p>
+
+        <!-- About — editorial intro copy -->
+        <div class="hero-about" aria-label="About">
+          <p class="hero-about-label">About</p>
+          <div class="hero-about-divider" aria-hidden="true"></div>
+
+          <p class="hero-about-body">
+            Having completed my MSc in International Business at WHU, I've spent the last year at Henkel helping to bring the Pattex brand to life across global markets, from building insight-led brand reviews to shaping creative assets for product relaunches.
+          </p>
+
+          <p class="hero-about-body">
+            My background in counseling psychology shapes how I approach brand work. Whether I'm mapping consumer profiles, crafting a campaign narrative, or coaching a sales team, I'm always asking the same question: <em>what's really driving people underneath the surface?</em> That lens helps me build brands that connect on a human level, not just a transactional one.
+          </p>
+
+          <p class="hero-about-body">
+            Outside of work, I'm a devoted fiction reader with a soft spot for fantasy. Years of getting lost in richly built worlds have made me a natural storyteller, something I bring into every brand and campaign I work on.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ====================================================
+         02 — WORK
+         ==================================================== -->
+    <section id="work" class="section" aria-labelledby="work-title">
+      <div class="container">
+
+        <div class="section-header">
+          <span id="work-title" class="section-title">Work</span>
+        </div>
+
+        <!-- Grid of 3 work cards -->
+        <ul class="work-grid" role="list">
+
+          <!-- Card 1: Pattex No More Nails — clickable image -->
+          <li class="work-card">
+            <div class="work-card-intro">
+              <p class="work-card-eyebrow">Campaign &amp; Toolkit</p>
+              <h2 class="work-card-title">
+                <span class="title-emoji" aria-hidden="true">🎯</span>
+                Pattex No More Nails Relaunch
+              </h2>
+              <p class="work-card-blurb">
+                Developed an interactive innovation page to highlight the key benefits and use cases of the No More Nails range.
+              </p>
+            </div>
+
+            <a class="work-image"
+               href="https://www.pattex.fr/products/static-landingpages/ni-clou-ni-vis.html"
+               target="_blank"
+               rel="noopener noreferrer"
+               aria-label="Visit the live Pattex No More Nails (Ni Clou Ni Vis) landing page">
+              <img src="work-images/pattex-no-more-nails.jpg"
+                   alt="Pattex Ni Clou Ni Vis campaign visual — 'Booste ton pouvoir' key art with the No More Nails tube"
+                   loading="lazy" />
+              <span class="work-image-cta">
+                <span class="cta-label">View Live Innovation Page (FR)</span>
+                <span class="cta-arrow" aria-hidden="true">↗</span>
+              </span>
+            </a>
+          </li>
+
+          <!-- Card 2: LEGO Messy Middle — slideshow -->
+          <li class="work-card">
+            <div class="work-card-intro">
+              <p class="work-card-eyebrow">Brand Strategy POV</p>
+              <h2 class="work-card-title">LEGO: The Messy Middle</h2>
+              <p class="work-card-blurb">
+                A speculative brand strategy POV for LEGO. As the industry races to automate creativity, LEGO has the chance to do the opposite: champion the messy middle, the human room to try, fail, and make something that's truly yours.
+              </p>
+            </div>
+
+            <div class="slideshow" role="region" aria-label="LEGO Messy Middle brand strategy presentation" aria-roledescription="carousel">
+              <div class="slideshow-stage">
+                <img class="slide active" src="work-slides/lego-01.jpg" alt="Slide 1 of 12 — The Messy Middle: How LEGO can win the AI era by protecting the human creativity it was built on." loading="lazy" />
+                <img class="slide" src="work-slides/lego-02.jpg" alt="Slide 2 of 12" loading="lazy" />
+                <img class="slide" src="work-slides/lego-03.jpg" alt="Slide 3 of 12" loading="lazy" />
+                <img class="slide" src="work-slides/lego-04.jpg" alt="Slide 4 of 12" loading="lazy" />
+                <img class="slide" src="work-slides/lego-05.jpg" alt="Slide 5 of 12" loading="lazy" />
+                <img class="slide" src="work-slides/lego-06.jpg" alt="Slide 6 of 12" loading="lazy" />
+                <img class="slide" src="work-slides/lego-07.jpg" alt="Slide 7 of 12" loading="lazy" />
+                <div class="slide composite" aria-label="Slide 8 of 12">
+                  <img class="slide-base" src="work-slides/lego-08.jpg" alt="Slide 8 of 12" loading="lazy" />
+                  <img class="slide-gif" src="work-slides/lego-08.gif" alt="" loading="lazy"
+                       style="left:17.80%; top:30.78%; width:17.95%; height:17.95%" />
+                </div>
+                <img class="slide" src="work-slides/lego-09.jpg" alt="Slide 9 of 12" loading="lazy" />
+                <img class="slide" src="work-slides/lego-10.jpg" alt="Slide 10 of 12" loading="lazy" />
+                <img class="slide" src="work-slides/lego-11.jpg" alt="Slide 11 of 12" loading="lazy" />
+                <div class="slide composite" aria-label="Slide 12 of 12">
+                  <img class="slide-base" src="work-slides/lego-12.jpg" alt="Slide 12 of 12" loading="lazy" />
+                  <img class="slide-gif" src="work-slides/lego-12.gif" alt="" loading="lazy"
+                       style="left:66.04%; top:35.43%; width:27.96%; height:37.28%" />
+                </div>
+
+                <button class="slide-arrow prev" aria-label="Previous slide">
+                  <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                </button>
+                <button class="slide-arrow next" aria-label="Next slide">
+                  <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </button>
+              </div>
+              <div class="slideshow-footer">
+                <span class="slide-counter">01 / 12</span>
+                <div class="slide-dots" role="tablist" aria-label="Slide selector"></div>
+              </div>
+            </div>
+          </li>
+
+          <!-- Card 3: Master's Thesis — slideshow -->
+          <li class="work-card">
+            <div class="work-card-intro">
+              <p class="work-card-eyebrow">Master's Thesis · WHU</p>
+              <h2 class="work-card-title">The Human Line: Where brand teams should and shouldn't let AI in</h2>
+              <p class="work-card-blurb">
+                Examines how brand-led organizations are actually using generative AI in strategy execution. Twelve interviews across brand, digital, and strategy functions, distilled into a clear view of where AI belongs, where it doesn't, and what brand teams should do next.
+              </p>
+            </div>
+
+            <div class="slideshow" role="region" aria-label="Thesis presentation slideshow" aria-roledescription="carousel">
+              <div class="slideshow-stage">
+                <img class="slide active" src="thesis-slides/slide-01.jpg" alt="Slide 1 of 9 — The Human Line: how brand-led organizations actually use generative AI, and where they refuse to." loading="lazy" />
+                <img class="slide" src="thesis-slides/slide-02.jpg" alt="Slide 2 of 9" loading="lazy" />
+                <img class="slide" src="thesis-slides/slide-03.jpg" alt="Slide 3 of 9" loading="lazy" />
+                <img class="slide" src="thesis-slides/slide-04.jpg" alt="Slide 4 of 9" loading="lazy" />
+                <img class="slide" src="thesis-slides/slide-05.jpg" alt="Slide 5 of 9" loading="lazy" />
+                <img class="slide" src="thesis-slides/slide-06.jpg" alt="Slide 6 of 9" loading="lazy" />
+                <img class="slide" src="thesis-slides/slide-07.jpg" alt="Slide 7 of 9" loading="lazy" />
+                <img class="slide" src="thesis-slides/slide-08.jpg" alt="Slide 8 of 9" loading="lazy" />
+                <img class="slide" src="thesis-slides/slide-09.jpg" alt="Slide 9 of 9" loading="lazy" />
+
+                <button class="slide-arrow prev" aria-label="Previous slide">
+                  <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                </button>
+                <button class="slide-arrow next" aria-label="Next slide">
+                  <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </button>
+              </div>
+              <div class="slideshow-footer">
+                <span class="slide-counter">01 / 09</span>
+                <div class="slide-dots" role="tablist" aria-label="Slide selector"></div>
+              </div>
+            </div>
+          </li>
+
+          <!-- Card 4: Uniqlo "The Bold Basic" — speculative campaign concept -->
+          <li class="work-card">
+            <div class="work-card-intro">
+              <p class="work-card-eyebrow">Campaign Concept</p>
+              <h2 class="work-card-title">Uniqlo: The Bold Basic</h2>
+              <p class="work-card-blurb">
+                A speculative campaign concept for Uniqlo. As fast fashion floods feeds with novelty, Uniqlo has the chance to flip the status game: repetition isn't the limitation, it's the skill. The Bold Basic celebrates the quiet mastery of styling what you already own.
+              </p>
+            </div>
+
+            <div class="slideshow" role="region" aria-label="Uniqlo The Bold Basic campaign concept presentation" aria-roledescription="carousel">
+              <div class="slideshow-stage">
+                <img class="slide active" src="work-slides/uniqlo-01.jpg" alt="Slide 1 of 10 — The Bold Basic: a speculative Uniqlo campaign concept" loading="lazy" />
+                <img class="slide" src="work-slides/uniqlo-02.jpg" alt="Slide 2 of 10" loading="lazy" />
+                <img class="slide" src="work-slides/uniqlo-03.jpg" alt="Slide 3 of 10" loading="lazy" />
+                <img class="slide" src="work-slides/uniqlo-04.jpg" alt="Slide 4 of 10" loading="lazy" />
+                <div class="slide composite" aria-label="Slide 5 of 10">
+                  <img class="slide-base" src="work-slides/uniqlo-05.jpg" alt="Slide 5 of 10" loading="lazy" />
+                  <img class="slide-gif" src="work-slides/uniqlo-05.gif" alt="" loading="lazy"
+                       style="left:57.45%; top:31.22%; width:34.45%; height:51.04%" />
+                </div>
+                <div class="slide composite" aria-label="Slide 6 of 10">
+                  <img class="slide-base" src="work-slides/uniqlo-06.jpg" alt="Slide 6 of 10" loading="lazy" />
+                  <img class="slide-gif" src="work-slides/uniqlo-06.gif" alt="" loading="lazy"
+                       style="left:31.84%; top:61.02%; width:34.52%; height:34.09%" />
+                </div>
+                <div class="slide composite" aria-label="Slide 7 of 10">
+                  <img class="slide-base" src="work-slides/uniqlo-07.jpg" alt="Slide 7 of 10" loading="lazy" />
+                  <img class="slide-gif" src="work-slides/uniqlo-07.gif" alt="" loading="lazy"
+                       style="left:67.85%; top:20.36%; width:28.70%; height:67.72%" />
+                </div>
+                <img class="slide" src="work-slides/uniqlo-08.jpg" alt="Slide 8 of 10" loading="lazy" />
+                <img class="slide" src="work-slides/uniqlo-09.jpg" alt="Slide 9 of 10" loading="lazy" />
+                <img class="slide" src="work-slides/uniqlo-10.jpg" alt="Slide 10 of 10" loading="lazy" />
+
+                <button class="slide-arrow prev" aria-label="Previous slide">
+                  <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                </button>
+                <button class="slide-arrow next" aria-label="Next slide">
+                  <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </button>
+              </div>
+              <div class="slideshow-footer">
+                <span class="slide-counter">01 / 10</span>
+                <div class="slide-dots" role="tablist" aria-label="Slide selector"></div>
+              </div>
+            </div>
+          </li>
+
+        </ul>
+      </div>
+    </section>
+
+
+    <!-- (Thesis, Experience, Education sections removed — work now contains all 3 deck/project cards) -->
+
+
+    <!-- (Skills section removed) -->
+
+
+    <!-- ====================================================
+         07 — CONTACT
+         ==================================================== -->
+    <section id="contact" class="section" aria-labelledby="contact-title">
+      <div class="container">
+
+        <div class="section-header">
+          <span id="contact-title" class="section-title">Contact</span>
+        </div>
+
+        <div class="contact-grid">
+
+          <!-- Email -->
+          <div>
+            <p class="contact-item-label">Email</p>
+            <!-- MAILTO link -->
+            <a href="mailto:shruthishankar1604@gmail.com" class="contact-item-value">
+              shruthishankar1604@gmail.com
+            </a>
+          </div>
+
+          <!-- LinkedIn -->
+          <div>
+            <p class="contact-item-label">LinkedIn</p>
+            <a href="https://www.linkedin.com/in/shruthi-sankaranarayanan/" target="_blank" rel="noopener noreferrer" class="contact-item-value">
+              linkedin.com/in/shruthi-sankaranarayanan
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- ====================================================
+       FOOTER
+       ==================================================== -->
+  <footer>
+    <div class="footer-inner">
+      <span class="footer-name">Shruthi Sankaranarayanan</span>
+      <span class="footer-copy">© <span id="footer-year"></span> · All rights reserved</span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    /* Inline: footer year — avoids a round-trip */
+    document.getElementById('footer-year').textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>

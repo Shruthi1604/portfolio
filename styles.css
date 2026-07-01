@@ -1,0 +1,1072 @@
+/* ============================================================
+   SHRUTHI SANKARANARAYANAN — Portfolio Stylesheet
+   Palette: Deep Forest Green + Warm Antique Gold
+   ============================================================ */
+
+/* ---------- Google Fonts ---------- */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@300;400;500&display=swap');
+
+/* ---------- Design Tokens ---------- */
+:root {
+  --bg:          #1C2B22;
+  --surface:     #243A2E;
+  --ivory:       #F4EFE6;
+  --muted:       #A9B6A3;
+  --gold:        #C6A24A;
+  --border:      rgba(244, 239, 230, 0.12);
+
+  --font-serif:  'Playfair Display', Georgia, serif;
+  --font-mono:   'IBM Plex Mono', 'Courier New', monospace;
+  --font-sans:   'Inter', system-ui, sans-serif;
+
+  --nav-h:       72px;          /* taller nav for legible links */
+  --max-w:       1880px;        /* essentially fills any normal monitor */
+  --gutter:      2rem;          /* tight side padding so content pushes to the edges */
+  --section-gap: 140px;
+}
+
+/* ---------- Reset & Base ---------- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; animation: none !important; }
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--ivory);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; text-decoration: none; }
+a:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+img { display: block; max-width: 100%; }
+
+/* ---------- Utility ---------- */
+.label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.container {
+  width: min(var(--max-w), 100% - var(--gutter) * 2);
+  margin-inline: auto;
+}
+
+.hairline { border: none; border-top: 1px solid var(--border); }
+
+/* ============================================================
+   NAV
+   ============================================================ */
+#site-nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  height: var(--nav-h);
+  background: rgba(28, 43, 34, 0.88);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+}
+
+.nav-inner {
+  width: min(var(--max-w), 100% - var(--gutter) * 2);
+  margin-inline: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+/* Monogram */
+.nav-monogram {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid var(--gold);
+  display: grid;
+  place-items: center;
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  color: var(--gold);
+  flex-shrink: 0;
+  transition: background 0.2s;
+}
+.nav-monogram:hover { background: var(--gold); color: var(--bg); }
+
+/* Nav links list */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 0.1rem;
+  list-style: none;
+  flex-wrap: nowrap;
+}
+
+.nav-links a {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;            /* ~12.5px — legible */
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 0.5rem 0.85rem;
+  border-radius: 3px;
+  transition: color 0.2s, background 0.2s;
+  white-space: nowrap;
+}
+
+.nav-links a:hover { color: var(--ivory); }
+.nav-links a.active { color: var(--gold); }
+
+/* Hamburger (mobile only) */
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 28px;
+  height: 28px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+.nav-hamburger span {
+  display: block;
+  width: 100%;
+  height: 1px;
+  background: var(--ivory);
+  transition: transform 0.25s, opacity 0.25s;
+}
+.nav-hamburger[aria-expanded="true"] span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+.nav-hamburger[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+.nav-hamburger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+/* Mobile overlay */
+#nav-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 99;
+  background: var(--bg);
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 4rem 2.5rem;
+}
+#nav-overlay.open { display: flex; }
+
+.overlay-links { list-style: none; width: 100%; }
+.overlay-links li { border-bottom: 1px solid var(--border); }
+.overlay-links a {
+  display: block;
+  padding: 1.25rem 0;
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  transition: color 0.2s;
+}
+.overlay-links a:hover, .overlay-links a.active { color: var(--gold); }
+
+/* ============================================================
+   HERO — Section 01
+   ============================================================ */
+#home {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-top: var(--nav-h);
+  position: relative;
+}
+
+.hero-inner {
+  width: min(var(--max-w), 100% - var(--gutter) * 2);
+  margin-inline: auto;
+  padding-block: 8rem 8rem;
+  display: block;
+  position: relative;
+}
+
+/* Location + date — top right */
+.hero-meta {
+  position: absolute;
+  top: 6rem;
+  right: 0;
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+.hero-meta span {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;             /* ~13px */
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+/* Name */
+.hero-name {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: clamp(3.5rem, 10vw, 9rem);
+  line-height: 0.92;
+  letter-spacing: -0.02em;
+  color: var(--ivory);
+  text-align: center;
+  margin-block: 3rem 2rem;
+}
+.hero-name .line2 {
+  font-size: clamp(2rem, 5.5vw, 5.5rem);
+  display: block;
+}
+
+/* Tagline */
+.hero-tagline {
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: clamp(0.85rem, 1.2vw, 1rem);   /* ~14-16px — clearly readable */
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 3rem;
+}
+
+/* Italic hero line — single line, scales down to fit any viewport */
+.hero-line {
+  text-align: center;
+  font-family: var(--font-serif);
+  font-style: italic;
+  /* Fluid sizing: shrinks on narrow screens so it stays on one line */
+  font-size: clamp(0.95rem, 2.1vw, 1.9rem);
+  color: var(--muted);
+  margin-inline: auto;
+  line-height: 1.4;
+  white-space: nowrap;
+  max-width: 100%;
+}
+
+/* Scroll cue */
+.hero-scroll-cue {
+  position: absolute;
+  bottom: 3rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  opacity: 0.6;
+}
+.scroll-line {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, var(--gold), transparent);
+}
+
+/* ---- About panel inside the hero ---- */
+.hero-about {
+  max-width: 1400px;
+  margin: 6rem auto 0;
+  text-align: center;
+}
+
+/* Small mono "ABOUT" label */
+.hero-about-label {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1rem;
+}
+
+/* Short gold hairline divider under the label */
+.hero-about-divider {
+  width: 40px;
+  height: 1px;
+  background: var(--gold);
+  opacity: 0.5;
+  margin: 0 auto 2.75rem;
+}
+
+/* First-sentence lead — bigger Playfair italic, like a magazine pull quote */
+.hero-about-lead {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(1.5rem, 2.6vw, 2.1rem);
+  line-height: 1.4;
+  color: var(--ivory);
+  margin-bottom: 2.5rem;
+  max-width: 1100px;
+  margin-inline: auto;
+}
+
+/* Body paragraphs */
+.hero-about-body {
+  font-family: var(--font-sans);
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: var(--muted);
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+.hero-about-body:last-child { margin-bottom: 0; }
+
+/* Italic emphasis inside the body (the rhetorical question) */
+.hero-about-body em {
+  font-family: var(--font-serif);
+  font-style: italic;
+  color: var(--ivory);
+}
+
+/* ============================================================
+   SHARED SECTION STYLES
+   ============================================================ */
+.section {
+  padding-block: var(--section-gap);
+  border-top: 1px solid var(--border);
+}
+
+.section-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 5rem;
+  text-align: center;
+}
+
+/* Big editorial-serif section title — "Work", "Thesis", etc. */
+.section-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2.75rem, 5.5vw, 4.5rem);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--ivory);
+  line-height: 1;
+}
+/* Gold hairline under the title for editorial accent */
+.section-title::after {
+  content: "";
+  display: block;
+  width: 56px;
+  height: 1px;
+  background: var(--gold);
+  margin: 1.5rem auto 0;
+}
+
+/* ============================================================
+   ROW LIST (Work / Experience / Education)
+   ============================================================ */
+.row-list { list-style: none; }
+
+.row-item {
+  display: grid;
+  grid-template-columns: 2.5rem 1fr auto;
+  align-items: start;
+  gap: 0 1.5rem;
+  padding: 2rem 1rem;
+  border-bottom: 1px solid var(--border);
+  border-radius: 4px;
+  transition: background 0.2s;
+  cursor: default;
+}
+.row-item:first-child { border-top: 1px solid var(--border); }
+.row-item:hover { background: var(--surface); }
+
+/* Index number */
+.row-index {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--muted);
+  letter-spacing: 0.1em;
+  padding-top: 0.5rem;
+}
+
+/* Main column */
+.row-main { display: flex; flex-direction: column; gap: 0.35rem; }
+
+.row-title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.35rem, 2.4vw, 1.75rem);
+  font-weight: 600;
+  color: var(--ivory);
+  line-height: 1.2;
+}
+
+.row-sub {
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  color: var(--muted);
+  line-height: 1.6;
+  max-width: 65ch;
+  margin-top: 0.35rem;
+}
+
+/* Right metadata */
+.row-meta {
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  padding-top: 0.4rem;
+}
+.row-meta .meta-date {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  white-space: nowrap;
+}
+.row-meta .meta-type {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  color: var(--gold);
+  white-space: nowrap;
+}
+
+/* Clickable row (Thesis) */
+.row-item.clickable { cursor: pointer; }
+.row-item.clickable .row-title { transition: color 0.2s; }
+.row-item.clickable:hover .row-title { color: var(--gold); }
+
+/* ============================================================
+   WORK GRID — 2-column responsive layout
+   ============================================================ */
+.work-grid {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 6rem 4rem;     /* row gap larger than column gap */
+}
+
+.work-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+/* Intro block: reserves consistent vertical space so all media line up.
+   Centered so the eyebrow/title/blurb sit directly above the thumbnail. */
+.work-card-intro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;     /* center child elements horizontally */
+  text-align: center;
+  min-height: 14.5rem;     /* tall enough for the longest centered blurb */
+}
+
+/* Constrain blurb width so long lines stay readable when centered */
+.work-card-blurb {
+  max-width: 56ch;
+}
+
+.work-card-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin: 0 0 0.9rem;
+  line-height: 1.3;
+}
+
+.work-card-title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.5rem, 1.8vw, 1.95rem);
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--ivory);
+  margin: 0 0 1rem;
+  min-height: 2.4em;       /* reserve 2 lines so short titles match tall ones */
+}
+.work-card-title .title-emoji {
+  display: inline-block;
+  margin-right: 0.4rem;
+  font-style: normal;
+}
+
+.work-card-blurb {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--muted);
+  margin: 0;
+  flex-grow: 1;            /* push media to a consistent bottom edge */
+}
+
+/* Make the slideshow / image inside a card fill the card width */
+.work-card .slideshow,
+.work-card .work-image {
+  max-width: 100%;
+  margin: 0;
+  width: 100%;
+}
+
+/* Pattex image: enforce same 16:9 aspect as the slideshow stages */
+.work-card .work-image {
+  aspect-ratio: 16 / 9;
+}
+.work-card .work-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Slideshow stage is already 16:9 via .slideshow-stage; just ensure no extra margin */
+.work-card .slideshow-stage {
+  margin: 0;
+}
+
+/* Mobile: stack the grid */
+@media (max-width: 900px) {
+  .work-grid {
+    grid-template-columns: 1fr;
+    gap: 5rem 0;
+  }
+}
+
+/* ---- Featured work row (Pattex No More Nails) ----
+   (Legacy styles kept for safety; the new grid takes precedence.) */
+.row-item--featured {
+  display: block;          /* override row grid */
+  padding: 2.5rem 0;
+  border-top: none;
+  border-bottom: none;
+  text-align: center;
+}
+.row-item--featured:hover { background: transparent; }
+.row-list--work .row-item--featured:first-child { border-top: none; }
+
+.row-item--featured .row-main {
+  display: block;
+  max-width: none;
+}
+
+.row-item--featured .row-title {
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  margin-bottom: 0.75rem;
+}
+
+.row-item--featured .title-emoji {
+  display: inline-block;
+  margin-right: 0.4rem;
+  font-style: normal;
+}
+
+.row-role {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  letter-spacing: 0.06em;
+  color: var(--gold);
+  margin: 0 0 1.75rem;
+}
+
+.row-lede {
+  font-family: var(--font-sans);
+  font-size: clamp(1.05rem, 1.4vw, 1.2rem);
+  color: var(--muted);
+  line-height: 1.6;
+  max-width: 780px;
+  margin: 0 auto 2.5rem;
+}
+
+/* Work-deck intro block (above the LEGO slideshow) */
+.work-deck-intro {
+  margin: 4rem auto 2.5rem;
+  max-width: 1500px;
+  text-align: center;
+}
+
+/* Lede inside a work-deck intro spreads wider (same treatment as thesis blurb) */
+.work-deck-intro .row-lede {
+  max-width: 1250px;
+}
+.row-list--work .row-item--featured + .row-item--featured {
+  border-top: 1px solid var(--border);
+  margin-top: 4rem;
+  padding-top: 4rem;
+}
+
+.work-deck-subtitle {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.85rem;
+}
+
+/* Clickable campaign image — slightly inset from the container */
+.work-image {
+  position: relative;
+  display: block;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+.work-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: transform 0.6s ease, filter 0.4s ease;
+}
+.work-image:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 24px 48px -20px rgba(0, 0, 0, 0.55);
+}
+.work-image:hover img {
+  transform: scale(1.02);
+  filter: brightness(0.92);
+}
+.work-image:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+
+/* Hover-overlay CTA */
+.work-image-cta {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.9rem 1.25rem;
+  background: linear-gradient(to top, rgba(28, 43, 34, 0.92), rgba(28, 43, 34, 0));
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ivory);
+  transition: color 0.2s;
+}
+.work-image:hover .work-image-cta { color: var(--gold); }
+.cta-arrow { font-size: 1.1rem; }
+
+/* Bulleted detail under featured row */
+.row-bullets {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-width: 70ch;
+}
+.row-bullets li {
+  position: relative;
+  padding-left: 1.25rem;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  color: var(--muted);
+  line-height: 1.65;
+  margin-bottom: 0.7rem;
+}
+.row-bullets li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.7em;
+  width: 6px;
+  height: 1px;
+  background: var(--gold);
+}
+
+/* ============================================================
+   SKILLS — Section 05
+   ============================================================ */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 3rem 4rem;
+}
+
+.skill-cluster-label {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.25rem;
+}
+
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.skill-tag {
+  font-family: var(--font-sans);
+  font-size: 0.92rem;
+  color: var(--ivory);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  padding: 0.35rem 0.8rem;
+  line-height: 1.5;
+}
+
+/* ============================================================
+   ABOUT — Section 06
+   ============================================================ */
+.about-body {
+  max-width: 720px;
+}
+
+.about-body p {
+  font-family: var(--font-sans);
+  font-size: 1.1rem;
+  color: var(--muted);
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+}
+
+.about-body strong {
+  color: var(--ivory);
+  font-weight: 500;
+}
+
+.about-closer {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  color: var(--ivory);
+  margin-top: 3rem;
+  line-height: 1.3;
+}
+
+/* ============================================================
+   THESIS — Section 07
+   ============================================================ */
+.thesis-intro {
+  max-width: 1500px;
+  margin: 0 auto 3.5rem;
+  text-align: center;
+}
+
+/* Headline on one line — fluid sizing scales it down on narrow viewports */
+.thesis-headline {
+  font-family: var(--font-serif);
+  font-size: clamp(0.85rem, 1.95vw, 1.95rem);
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--ivory);
+  margin-bottom: 2rem;
+  white-space: nowrap;
+}
+.thesis-headline em {
+  font-style: italic;
+  color: var(--gold);
+}
+
+/* Blurb spreads wider across the screen */
+.thesis-blurb {
+  font-family: var(--font-sans);
+  font-size: 1.1rem;
+  color: var(--muted);
+  line-height: 1.75;
+  margin: 0 auto 1.5rem;
+  max-width: 1250px;
+}
+
+.thesis-meta {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+}
+
+/* ---------- Slideshow ---------- */
+.slideshow {
+  width: 100%;
+  max-width: 1200px;       /* slightly smaller than the container */
+  margin: 1rem auto 0;
+}
+
+.slideshow-stage {
+  position: relative;
+  width: 100%;
+  /* 16:9 aspect ratio — matches the source deck */
+  aspect-ratio: 16 / 9;
+  background: #0f1814;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  opacity: 0;
+  transition: opacity 0.45s ease;
+  pointer-events: none;
+}
+.slide.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Composite slide — static JPG base + animated GIF overlay positioned to match the original deck */
+.slide.composite {
+  display: block;       /* override object-fit which doesn't apply to a div */
+}
+.slide.composite .slide-base {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.slide.composite .slide-gif {
+  position: absolute;
+  object-fit: cover;    /* fill the placeholder space cleanly */
+  /* left, top, width, height are set inline based on the slide layout */
+}
+
+/* Arrow buttons */
+.slide-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(28, 43, 34, 0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid var(--border);
+  color: var(--ivory);
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: background 0.2s, color 0.2s, border-color 0.2s, opacity 0.2s;
+  z-index: 2;
+}
+.slide-arrow:hover {
+  background: var(--gold);
+  color: var(--bg);
+  border-color: var(--gold);
+}
+.slide-arrow:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+.slide-arrow.prev { left: 1.25rem; }
+.slide-arrow.next { right: 1.25rem; }
+
+/* Disabled state when on first/last slide */
+.slide-arrow[disabled] {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+.slide-arrow[disabled]:hover {
+  background: rgba(28, 43, 34, 0.7);
+  color: var(--ivory);
+  border-color: var(--border);
+}
+
+/* Footer: counter + dots */
+.slideshow-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1.25rem;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.slide-counter {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  letter-spacing: 0.16em;
+  color: var(--muted);
+}
+
+.slide-dots {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.slide-dot {
+  width: 24px;
+  height: 2px;
+  background: var(--border);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.slide-dot:hover { background: var(--muted); }
+.slide-dot.active { background: var(--gold); }
+.slide-dot:focus-visible { outline: 2px solid var(--gold); outline-offset: 4px; }
+
+@media (max-width: 600px) {
+  .slide-arrow { width: 38px; height: 38px; }
+  .slide-arrow.prev { left: 0.5rem; }
+  .slide-arrow.next { right: 0.5rem; }
+}
+
+/* ============================================================
+   CONTACT — Section 08
+   ============================================================ */
+.contact-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 28rem;           /* very expansive — Email on one side, LinkedIn on the other */
+  text-align: center;
+}
+
+/* Step the gap down on narrower screens so they don't crowd the edges */
+@media (max-width: 1400px) {
+  .contact-grid { gap: 16rem; }
+}
+@media (max-width: 1100px) {
+  .contact-grid { gap: 8rem; }
+}
+@media (max-width: 700px) {
+  .contact-grid { gap: 3rem; }
+}
+
+.contact-item-label {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.75rem;
+}
+
+.contact-item-value {
+  font-family: var(--font-serif);
+  font-size: clamp(1rem, 2vw, 1.3rem);
+  color: var(--ivory);
+  line-height: 1.3;
+  transition: color 0.2s;
+}
+
+a.contact-item-value:hover { color: var(--gold); }
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+footer {
+  border-top: 1px solid var(--border);
+  padding-block: 3rem;
+}
+
+.footer-inner {
+  width: min(var(--max-w), 100% - var(--gutter) * 2);
+  margin-inline: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.footer-name {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  color: var(--muted);
+}
+
+.footer-copy {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+  opacity: 0.65;
+}
+
+/* ============================================================
+   RESPONSIVE — mobile < 768px
+   ============================================================ */
+/* Tablet: keep small but comfortable gutter */
+@media (max-width: 1100px) {
+  :root { --gutter: 1.5rem; }
+}
+
+@media (max-width: 767px) {
+  :root { --section-gap: 90px; --gutter: 1.5rem; }
+
+  /* Let the thesis headline wrap on phones — nowrap would overflow */
+  .thesis-headline {
+    white-space: normal;
+    font-size: clamp(1.25rem, 5vw, 1.6rem);
+  }
+
+  /* Hide desktop nav links, show hamburger */
+  .nav-links { display: none; }
+  .nav-hamburger { display: flex; }
+
+  /* Hero */
+  .hero-meta { position: static; text-align: left; margin-bottom: 2rem; }
+  .hero-inner { padding-block: 5rem 5rem; }
+  .hero-name { margin-block: 1.5rem; }
+
+  /* Rows: stack meta below title */
+  .row-item {
+    grid-template-columns: 2rem 1fr;
+    grid-template-rows: auto auto;
+  }
+  .row-meta {
+    grid-column: 2;
+    text-align: left;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 0.5rem;
+  }
+
+  /* Footer */
+  .footer-inner { flex-direction: column; align-items: flex-start; }
+}
+
+@media (max-width: 480px) {
+  .hero-name { font-size: clamp(2.8rem, 14vw, 5rem); }
+  .hero-name .line2 { font-size: clamp(1.5rem, 8vw, 3rem); }
+}
