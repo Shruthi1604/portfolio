@@ -63,7 +63,10 @@
       "Bash(cp '/Users/shruthi/Desktop/Job application materail/index.html' /Users/shruthi/Desktop/portfolio-deploy/)",
       "Bash(cp '/Users/shruthi/Desktop/Job application materail/styles.css' /Users/shruthi/Desktop/portfolio-deploy/)",
       "Bash(cp '/Users/shruthi/Desktop/Job application materail/script.js' /Users/shruthi/Desktop/portfolio-deploy/)",
-      "Bash(cp \"/Users/shruthi/Desktop/Job application materail/styles.css\" /tmp/portfolio_preview/ *)"
+      "Bash(cp \"/Users/shruthi/Desktop/Job application materail/styles.css\" /tmp/portfolio_preview/ *)",
+      "Bash(/opt/anaconda3/bin/python -c \"import pptx; print\\('pptx', pptx.__version__\\)\")",
+      "Bash(/opt/anaconda3/bin/python -c \"import pptx; print\\('OK'\\)\")",
+      "Bash(/opt/anaconda3/bin/python -c \"import cairosvg; print\\('cairosvg OK'\\)\")"
     ]
   }
 }
