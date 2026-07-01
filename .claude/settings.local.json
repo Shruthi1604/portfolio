@@ -62,7 +62,8 @@
       "Bash(mkdir -p /Users/shruthi/Desktop/portfolio-deploy)",
       "Bash(cp '/Users/shruthi/Desktop/Job application materail/index.html' /Users/shruthi/Desktop/portfolio-deploy/)",
       "Bash(cp '/Users/shruthi/Desktop/Job application materail/styles.css' /Users/shruthi/Desktop/portfolio-deploy/)",
-      "Bash(cp '/Users/shruthi/Desktop/Job application materail/script.js' /Users/shruthi/Desktop/portfolio-deploy/)"
+      "Bash(cp '/Users/shruthi/Desktop/Job application materail/script.js' /Users/shruthi/Desktop/portfolio-deploy/)",
+      "Bash(cp \"/Users/shruthi/Desktop/Job application materail/styles.css\" /tmp/portfolio_preview/ *)"
     ]
   }
 }
