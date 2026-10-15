@@ -973,6 +973,9 @@ html{scroll-snap-type:y proximity}
  .member{width:min(100%,240px)}.mc b{font-size:20px}
  .act{margin-top:14px}.act b{font-size:26px}.act-v{font-size:14px}
 }
+.toast{opacity:0;visibility:hidden;pointer-events:none;transition:transform .35s cubic-bezier(.2,1.4,.4,1),opacity .25s,visibility 0s .35s}
+.toast.on{opacity:1;visibility:visible;transition:transform .35s cubic-bezier(.2,1.4,.4,1),opacity .25s}
+@media (max-width:760px){.toast{bottom:calc(90px + env(safe-area-inset-bottom))}}
 </style>
 </head>
 <body>
