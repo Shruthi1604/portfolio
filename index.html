@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="description" content="Shruthi Sankaranarayanan is a brand strategist. Selected work: Pattex, LEGO, Uniqlo and a thesis on how brands use AI.">
 <meta property="og:type" content="website"><meta property="og:title" content="Shruthi Sankaranarayanan, Brand Strategist">
-<meta property="og:description" content="Shruthi Sankaranarayanan is a brand strategist. Selected work: Pattex, LEGO, Uniqlo and a thesis on how brands use AI."><meta property="og:image" content="og-hero.jpg">
+<meta property="og:description" content="Shruthi Sankaranarayanan is a brand strategist. Selected work: Pattex, LEGO, Uniqlo and a thesis on how brands use AI."><meta property="og:image" content="https://shruthi-sankaranarayanan-portfolio.vercel.app/og-hero.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:image" content="https://shruthi-sankaranarayanan-portfolio.vercel.app/og-hero.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='32' fill='%23E1017E'/%3E%3Ctext x='32' y='45' text-anchor='middle' font-family='Impact,Arial Black,sans-serif' font-size='40' fill='%23FFF4D6'%3ES%3C/text%3E%3C/svg%3E">
 <title>Shruthi Sankaranarayanan · Brand Strategist</title>
@@ -879,10 +879,7 @@ html{scroll-snap-type:y proximity}
 
 /* ---- mobile pass ---- */
 *{-webkit-tap-highlight-color:transparent}
-@media (hover:none){
- .more{white-space:normal;display:inline-block;border-radius:16px;line-height:1.5}
- .more span{max-width:none;display:inline;white-space:normal}
-}
+
 @media (max-width:760px){
  .intro h2{font-size:clamp(52px,15vw,80px);line-height:.9}
  .intro h2 .m .aside{position:static;transform:none;display:flex;justify-content:center;margin-top:14px;white-space:normal;font-size:17px}
@@ -942,6 +939,40 @@ html{scroll-snap-type:y proximity}
 .plc.has.half .plc-a{display:block;background:var(--mag);color:#fff;animation:nudge 2.4s ease-in-out infinite}
 .plc.has.half .plc-a:hover{background:var(--ink);animation:none}
 @keyframes nudge{0%,80%,100%{transform:none}85%{transform:rotate(-3deg) scale(1.04)}90%{transform:rotate(3deg) scale(1.04)}95%{transform:rotate(-1deg)}}
+
+/* ---- mobile pass 2 ---- */
+.face,.tcs span,.more{touch-action:manipulation;cursor:pointer}
+.more.open span{max-width:280px}
+@media (max-width:760px){
+ html{scroll-snap-type:none}
+ .hero.gal .nm .row{flex-wrap:nowrap!important;gap:.5vw!important}
+ .hero.gal .nm .r1 .sp{flex:0 0 2vw!important;width:2vw!important;height:auto}
+ .hero.gal .nm .r2 .sp{width:2vw}
+ .hero.gal .nm .big{--fs:calc((100vw - 24px)/21.5)!important;width:calc(var(--fs)*.84)!important;height:calc(var(--fs)*1.34)}
+ .hero.gal .nm .sm{--fs:calc((100vw - 24px)/15)!important;width:calc(var(--fs)*.9)!important;height:calc(var(--fs)*1.34)}
+ .plc{top:12px;left:10px}
+ .plc::before,.plc::after{display:none}
+ .plc-card{width:auto;max-width:180px;padding:8px 12px 10px;gap:3px}
+ .plc-k{font-size:9px}.plc-t{font-size:17px}.plc-s{display:none!important}
+ .plc-n{padding-top:4px}.plc-n b{font-size:24px}.plc-n span{font-size:9px}
+ .plc button{padding:8px 10px;font-size:10px}
+ .hero.gal.cleared .plc-card>*:not(.plc-h){display:none!important}
+ .hero.gal.cleared .plc-card{padding:6px}
+ .more.open{white-space:normal;border-radius:16px;line-height:1.5}
+ .more.open span{max-width:none;display:inline;white-space:normal}
+ .face{width:min(56vw,210px)}
+ .pp b{font-size:clamp(32px,9vw,40px)}.pp em{font-size:19px}
+ .trio{gap:48px!important}
+ .shop-head h2{font-size:10.5cqw}
+ .exit{font-size:16px;padding:6px 10px 4px}
+ .shop .shelf{margin-top:30px;row-gap:36px}
+ .slot{padding-top:18px}
+ .pcard{width:min(100%,290px)}
+ .book{width:150px;height:210px}
+ .bk-cover b{font-size:22px}.bk-sub{font-size:14px}
+ .member{width:min(100%,240px)}.mc b{font-size:20px}
+ .act{margin-top:14px}.act b{font-size:26px}.act-v{font-size:14px}
+}
 </style>
 </head>
 <body>
@@ -1308,8 +1339,8 @@ pps.forEach(function(p,i){var face=p.querySelector('.face'),img=face.querySelect
  function show(n){if(n===k)return;k=n;face.classList.toggle('real',k===1);
   if(reduce){img.src=srcs[k];return}
   face.animate(OUT[i],{duration:380,easing:'ease-in'}).onfinish=function(){img.src=srcs[k];face.animate(IN[i],{duration:800,easing:'cubic-bezier(.2,1.5,.4,1)'})}}
- if(hov){face.addEventListener('mouseenter',function(){show(1)});face.addEventListener('mouseleave',function(){show(0)});face.addEventListener('click',sticker)}
- else face.addEventListener('click',function(){show(1-k);if(k)sticker()});
+ face.addEventListener('pointerenter',function(e){if(e.pointerType==='mouse')show(1)});face.addEventListener('pointerleave',function(e){if(e.pointerType==='mouse')show(0)});
+ face.addEventListener('pointerup',function(e){if(e.pointerType==='mouse')sticker();else{show(1-k);if(k)sticker()}});
  face.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();show(1-k);if(k)sticker()}});
  faces.push({show:show,sticker:sticker})});
 var trio=document.querySelector('.intro .trio');
@@ -1335,6 +1366,10 @@ var am=document.getElementById('act-mail');if(am)am.addEventListener('click',fun
 
 var pcp=document.getElementById('pc-photo'),duo=document.querySelector('.duo .bw');if(pcp&&duo)pcp.src=duo.src;
 if(matchMedia('(hover:none)').matches){var ps=document.querySelector('.plc-s');if(ps)ps.textContent='Tap any frame to knock it off the wall.'}
+(function(){var mo=document.querySelector('.intro .more');if(mo)mo.addEventListener('click',function(){mo.classList.toggle('open')});
+ if(!matchMedia('(max-width:760px)').matches)return;var S=1.9;
+ document.querySelectorAll('.hero.gal .wall .pic').forEach(function(p){var st=p.style,l=parseFloat(st.left),t=parseFloat(st.top),w=parseFloat(st.width),hh=parseFloat(st.height),bw=parseFloat(st.borderWidth);
+  if(isNaN(w))return;st.left=(l+w/2-w*S/2)+'vw';st.top='calc('+t+'% - '+(hh*(S-1)/2).toFixed(2)+'vw)';st.width=(w*S).toFixed(2)+'vw';st.height=(hh*S).toFixed(2)+'vw';if(!isNaN(bw))st.borderWidth=(bw*S).toFixed(2)+'vw'})})();
 </script>
 </body>
 </html>
