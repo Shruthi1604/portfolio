@@ -976,6 +976,7 @@ html{scroll-snap-type:y proximity}
 .toast{opacity:0;visibility:hidden;pointer-events:none;transition:transform .35s cubic-bezier(.2,1.4,.4,1),opacity .25s,visibility 0s .35s}
 .toast.on{opacity:1;visibility:visible;transition:transform .35s cubic-bezier(.2,1.4,.4,1),opacity .25s}
 @media (max-width:760px){.toast{bottom:calc(90px + env(safe-area-inset-bottom))}}
+[data-nav=b] .nv-name{display:none!important}
 </style>
 </head>
 <body>
@@ -1002,7 +1003,7 @@ html{scroll-snap-type:y proximity}
 <section class="work" id="work">
  <div class="glow" id="glow"></div>
  <div class="bigmq"><div>Selected work ✺ Selected work ✺ Selected work ✺ Selected work ✺ </div></div>
- <div class="wtop"><h2>The <span>work</span></h2><span class="mono" style="color:var(--dim)">(02) Four projects</span><div class="wpick" aria-label="Choose a project"><button type="button">01 No More Nails</button><button type="button">02 The Human Line</button><button type="button">03 The Messy Middle</button><button type="button">04 The Bold Basic</button></div></div>
+ <div class="wtop"><h2>The <span>work</span></h2><div class="wpick" aria-label="Choose a project"><button type="button">01 No More Nails</button><button type="button">02 The Human Line</button><button type="button">03 The Messy Middle</button><button type="button">04 The Bold Basic</button></div></div>
  <div class="stage" id="stage"><div class="ring" id="ring"></div></div>
  <div class="mrow" id="mrow" role="list"></div>
  <div class="wmeta"><div class="k mono" id="wk"></div><h3 id="wt"><span></span></h3><p id="wp"></p></div>
@@ -1010,7 +1011,7 @@ html{scroll-snap-type:y proximity}
 
 <section class="shop" id="contact" data-bg="c" aria-labelledby="contact-title">
  <div class="shop-in">
-  <span class="mono shop-k">(03) Exit through the gift shop</span>
+  <span class="mono shop-k">Exit through the gift shop</span>
   <div class="shop-head"><h2 id="contact-title">Let’s make something stick.</h2><div class="exit" aria-hidden="true">Exit <i>→</i></div></div>
   <div class="shelf">
    <div class="slot">
